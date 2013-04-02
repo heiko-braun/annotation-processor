@@ -127,11 +127,22 @@ public abstract class AbstractAnnotationProcessorMojo extends AbstractMojo
     //@MojoParameter( description="excludes pattern")
     private String[] excludes;
 
-    private static final Lock syncExecutionLock = new ReentrantLock();
-    private File[] additionalSourceDirectories;
+    /**
+     * append source artifacts to sources list
+     * @parameter
+     */
     private static boolean appendSourceArtifacts = false;
 
+    /**
+     * classifier for source artifacts. defaults to 'sources'
+     * @parameter
+     */
     private static String sourceClassifier = "sources";
+
+
+    private static final Lock syncExecutionLock = new ReentrantLock();
+    private File[] additionalSourceDirectories;
+
 
     private List<File> sourceArtifacts = new ArrayList();
 
